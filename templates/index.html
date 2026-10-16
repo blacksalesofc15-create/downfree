@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOWNFREE - Download de Vídeos Grátis</title>
+    <style>
+        body { background-color: #020617; color: #f8fafc; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; justify-content: space-between; min-height: 100vh; margin: 0; padding: 0; align-items: center; }
+        .container { max-width: 600px; width: 90%; margin: auto; padding: 40px 20px; text-align: center; }
+        h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; background: linear-gradient(to right, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        p { color: #94a3b8; font-size: 1.1rem; }
+        .card { background-color: #0f172a; border: 1px solid #1e293b; padding: 30px; border-radius: 16px; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5); margin-top: 30px; }
+        .input-group { position: relative; margin-bottom: 20px; }
+        input[type="url"] { width: 100%; padding: 16px; box-sizing: border-box; background-color: #020617; border: 1px solid #334155; border-radius: 12px; color: white; font-size: 1rem; outline: none; }
+        input[type="url"]:focus { border-color: #6366f1; }
+        .clear-btn { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #64748b; cursor: pointer; font-weight: bold; }
+        .submit-btn { width: 100%; padding: 16px; background-color: #4f46e5; color: white; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; }
+        .submit-btn:hover { background-color: #4338ca; }
+        .alert { padding: 15px; border-radius: 12px; margin-bottom: 20px; font-size: 0.95rem; background-color: rgba(239, 68, 68, 0.1); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.2); }
+        #loading { display: none; margin-top: 25px; color: #94a3b8; }
+        .spinner { border: 4px solid rgba(255,255,255,0.1); width: 36px; height: 36px; border-radius: 50%; border-left-color: #6366f1; animation: spin 1s linear infinite; margin: 0 auto 10px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        footer { color: #334155; font-size: 0.8rem; margin-top: 50px; padding-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="font-weight: 900; color: #818cf8; text-align: left; font-size: 1.2rem;">DOWNFREE.</div>
+        <h1>DOWNFREE</h1>
+        <p>Baixe mídias sem restrições e sem marca d'água de qualquer plataforma.</p>
+        
+        {% if get_flashed_messages() %}
+          {% for message in get_flashed_messages() %}
+            <div class="alert">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+
+        <div class="card">
+            <form action="/download" method="POST" onsubmit="showLoading()">
+                <div class="input-group">
+                    <input type="url" name="video_url" id="video_url" required placeholder="Cole o link do vídeo aqui...">
+                    <button type="button" class="clear-btn" onclick="clearInput()">LIMPAR</button>
+                </div>
+                <button type="submit" id="btn-submit" class="submit-btn">Download Automático</button>
+            </form>
+            <div id="loading">
+                <div class="spinner"></div>
+                <div style="font-weight: 600;">Processando vídeo...</div>
+            </div>
+        </div>
+    </div>
+    <footer>&copy; 2026 DOWNFREE. Todos os direitos reservados.</footer>
+    <script>
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('btn-submit').disabled = true;
+            document.getElementById('btn-submit').style.opacity = '0.4';
+        }
+        function clearInput() { document.getElementById('video_url').value = ''; }
+    </script>
+</body>
+</html>

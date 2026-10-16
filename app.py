@@ -49,3 +49,5 @@ def download_video():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
+
+ydl_opts['proxy'] = 'http://usuario:senha@ip_do_proxy:porta'

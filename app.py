@@ -31,9 +31,9 @@ def download_video():
         'http_headers': {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         },
-        # LINHA DO PROXY CORRIGIDA: Deve ficar exatamente aqui dentro do bloco de opções
-        # Substitua pelas credenciais do serviço de proxy residencial que você contratar
-        'proxy': 'http://usuario:senha@ip_do_proxy:porta'
+        # PROXY DESATIVADO: Colocamos o '#' na frente para o site ignorar os dados falsos.
+        # Quando você contratar um proxy real, mude os dados abaixo e apague o '#' do início da linha.
+        # '#proxy': 'http://usuario:senha@ip_do_proxy:porta'
     }
 
     # Sistema de cópia e leitura segura de cookies para evitar o erro de Read-Only da Render
@@ -65,7 +65,7 @@ def download_video():
         
     except Exception as e:
         print(f"Erro detalhado na nuvem: {str(e)}")
-        flash("Erro ao extrair vídeo desta plataforma. Tente outra URL ou atualize os dados do Proxy/Cookies.")
+        flash("Erro ao extrair vídeo desta plataforma. Tente outra URL ou atualize os dados de Cookies.")
         return redirect('/')
 
 if __name__ == '__main__':

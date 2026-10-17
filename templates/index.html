@@ -10,6 +10,10 @@
         h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; background: linear-gradient(to right, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         p { color: #94a3b8; font-size: 1.1rem; }
         .card { background-color: #0f172a; border: 1px solid #1e293b; padding: 30px; border-radius: 16px; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5); margin-top: 30px; }
+        
+        /* CAIXA DE AVISO EM DESTAQUE NO TOPO */
+        .alert-info-yellow { padding: 15px; border-radius: 12px; margin-top: 20px; margin-bottom: 10px; font-size: 0.95rem; background-color: rgba(234, 179, 8, 0.1); color: #fef08a; border: 1px solid rgba(234, 179, 8, 0.2); text-align: center; line-height: 1.4; }
+        
         .input-group { position: relative; margin-bottom: 20px; }
         input[type="url"] { width: 100%; padding: 16px; box-sizing: border-box; background-color: #020617; border: 1px solid #334155; border-radius: 12px; color: white; font-size: 1rem; outline: none; }
         input[type="url"]:focus { border-color: #6366f1; }
@@ -29,6 +33,11 @@
         <h1>DOWNFREE</h1>
         <p>Baixe mídias sem restrições e sem marca d'água de qualquer plataforma.</p>
         
+        <!-- SEÇÃO DE AVISO ADICIONADA LOGO ABAIXO DO TEXTO PRINCIPAL -->
+        <div class="alert-info-yellow">
+            ⚠️ <strong>Aviso importante:</strong> O download de vídeos do <strong>YouTube</strong> ainda está em desenvolvimento. Agradecemos a paciência!
+        </div>
+
         {% if get_flashed_messages() %}
           {% for message in get_flashed_messages() %}
             <div class="alert">{{ message }}</div>
